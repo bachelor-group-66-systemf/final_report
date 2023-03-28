@@ -27,6 +27,11 @@
 	\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{#3}}}}
 \usepackage{float} 									% Enables object position enforcement using [H]
 \usepackage{parskip}								% Enables vertical spaces correctly 
+\usepackage[
+    citestyle=numeric,
+    style=ieee
+]{biblatex}                                         % References
+\addbibresource{include/backmatter/refs.bib}        % References source file
 
 % DEFINE THESIS TYPE
 \def\ThesisType{B} % M - master, B - bachelor
