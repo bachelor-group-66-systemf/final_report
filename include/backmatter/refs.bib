@@ -42,6 +42,141 @@
     url={https://courses.cs.washington.edu/courses/csep521/07wi/prj/rick.pdf}
  }
 
+
+% Bidirectional
+@article{bidir,
+author = {Dunfield, Jana and Krishnaswami, Neel},
+title = {Bidirectional Typing},
+year = {2021},
+issue_date = {June 2022},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {54},
+number = {5},
+issn = {0360-0300},
+url = {https://doi.org/10.1145/3450952},
+doi = {10.1145/3450952},
+abstract = {Bidirectional typing combines two modes of typing: type checking, which checks that a program satisfies a known type, and type synthesis, which determines a type from the program. Using checking enables bidirectional typing to support features for which inference is undecidable; using synthesis enables bidirectional typing to avoid the large annotation burden of explicitly typed languages. In addition, bidirectional typing improves error locality. We highlight the design principles that underlie bidirectional type systems, survey the development of bidirectional typing from the prehistoric period before Pierce and Turner’s local type inference to the present day, and provide guidance for future investigations.},
+journal = {ACM Comput. Surv.},
+month = {may},
+articleno = {98},
+numpages = {38},
+keywords = {type inference, Type checking}
+}
+
+@inproceedings{10.1145/2500365.2500582,
+author = {Dunfield, Jana and Krishnaswami, Neelakantan R.},
+title = {Complete and Easy Bidirectional Typechecking for Higher-Rank Polymorphism},
+year = {2013},
+isbn = {9781450323260},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2500365.2500582},
+doi = {10.1145/2500365.2500582},
+abstract = {Bidirectional typechecking, in which terms either synthesize a type or are checked against a known type, has become popular for its scalability (unlike Damas-Milner type inference, bidirectional typing remains decidable even for very expressive type systems), its error reporting, and its relative ease of implementation. Following design principles from proof theory, bidirectional typing can be applied to many type constructs. The principles underlying a bidirectional approach to polymorphism, however, are less obvious. We give a declarative, bidirectional account of higher-rank polymorphism, grounded in proof theory; this calculus enjoys many properties such as eta-reduction and predictability of annotations. We give an algorithm for implementing the declarative system; our algorithm is remarkably simple and well-behaved, despite being both sound and complete.},
+booktitle = {Proceedings of the 18th ACM SIGPLAN International Conference on Functional Programming},
+pages = {429–442},
+numpages = {14},
+keywords = {bidirectional typechecking, higher-rank polymorphism},
+location = {Boston, Massachusetts, USA},
+series = {ICFP '13}
+}
+
+@article{bidir-higher,
+author = {Dunfield, Jana and Krishnaswami, Neelakantan R.},
+title = {Complete and Easy Bidirectional Typechecking for Higher-Rank Polymorphism},
+year = {2013},
+issue_date = {September 2013},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {48},
+number = {9},
+issn = {0362-1340},
+url = {https://doi.org/10.1145/2544174.2500582},
+doi = {10.1145/2544174.2500582},
+abstract = {Bidirectional typechecking, in which terms either synthesize a type or are checked against a known type, has become popular for its scalability (unlike Damas-Milner type inference, bidirectional typing remains decidable even for very expressive type systems), its error reporting, and its relative ease of implementation. Following design principles from proof theory, bidirectional typing can be applied to many type constructs. The principles underlying a bidirectional approach to polymorphism, however, are less obvious. We give a declarative, bidirectional account of higher-rank polymorphism, grounded in proof theory; this calculus enjoys many properties such as eta-reduction and predictability of annotations. We give an algorithm for implementing the declarative system; our algorithm is remarkably simple and well-behaved, despite being both sound and complete.},
+journal = {SIGPLAN Not.},
+month = {sep},
+pages = {429–442},
+numpages = {14},
+keywords = {higher-rank polymorphism, bidirectional typechecking}
+}
+
+@article{bidir-gadts,
+author = {Dunfield, Jana and Krishnaswami, Neelakantan R.},
+title = {Sound and Complete Bidirectional Typechecking for Higher-Rank Polymorphism with Existentials and Indexed Types},
+year = {2019},
+issue_date = {January 2019},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {3},
+number = {POPL},
+url = {https://doi.org/10.1145/3290322},
+doi = {10.1145/3290322},
+abstract = {Bidirectional typechecking, in which terms either synthesize a type or are checked against a known type, has become popular for its applicability to a variety of type systems, its error reporting, and its ease of implementation. Following principles from proof theory, bidirectional typing can be applied to many type constructs. The principles underlying a bidirectional approach to indexed types (generalized algebraic datatypes) are less clear. Building on proof-theoretic treatments of equality, we give a declarative specification of typing based on focalization. This approach permits declarative rules for coverage of pattern matching, as well as support for first-class existential types using a focalized subtyping judgment. We use refinement types to avoid explicitly passing equality proofs in our term syntax, making our calculus similar to languages such as Haskell and OCaml. We also extend the declarative specification with an explicit rules for deducing when a type is principal, permitting us to give a complete declarative specification for a rich type system with significant type inference. We also give a set of algorithmic typing rules, and prove that it is sound and complete with respect to the declarative system. The proof requires a number of technical innovations, including proving soundness and completeness in a mutually recursive fashion.},
+journal = {Proc. ACM Program. Lang.},
+month = {jan},
+articleno = {9},
+numpages = {28},
+keywords = {equality types, GADTs, indexed types, higher-rank polymorphism, existential types, bidirectional typechecking}
+}
+
+@inproceedings{pfenning-recipe,
+author = {Dunfield, Jana and Pfenning, Frank},
+title = {Tridirectional Typechecking},
+year = {2004},
+isbn = {158113729X},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/964001.964025},
+doi = {10.1145/964001.964025},
+abstract = {In prior work we introduced a pure type assignment system that encompasses a rich set of property types, including intersections, unions, and universally and existentially quantified dependent types. This system was shown sound with respect to a call-by-value operational semantics with effects, yet is inherently undecidable.In this paper we provide a decidable formulation for this system based on bidirectional checking, combining type synthesis and analysis following logical principles. The presence of unions and existential quantification requires the additional ability to visit subterms in evaluation position before the context in which they occur, leading to a tridirectional type system. While soundness with respect to the type assignment system is immediate, completeness requires the novel concept of contextual type annotations, introducing a notion from the study of principal typings into the source program.},
+booktitle = {Proceedings of the 31st ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages},
+pages = {281–292},
+numpages = {12},
+keywords = {dependent types, type refinements, intersection types, union types},
+location = {Venice, Italy},
+series = {POPL '04}
+}
+
+@article{bidir-mechanical,
+author = {Zhao, Jinxu and Oliveira, Bruno C. d. S. and Schrijvers, Tom},
+title = {A Mechanical Formalization of Higher-Ranked Polymorphic Type Inference},
+year = {2019},
+issue_date = {August 2019},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {3},
+number = {ICFP},
+url = {https://doi.org/10.1145/3341716},
+doi = {10.1145/3341716},
+abstract = {Modern functional programming languages, such as Haskell or OCaml, use sophisticated forms of type inference. While an important topic in the Programming Languages research, there is little work on the mechanization of the metatheory of type inference in theorem provers. In particular we are unaware of any complete formalization of the type inference algorithms that are the backbone of modern functional languages. This paper presents the first full mechanical formalization of the metatheory for higher-ranked polymorphic type inference. The system that we formalize is the bidirectional type system by Dunfield and Krishnaswami (DK). The DK type system has two variants (a declarative and an algorithmic one) that have been manually proven sound, complete and decidable. We present a mechanical formalization in the Abella theorem prover of DK’s declarative type system with a novel algorithmic system. We have a few reasons to use a new algorithm. Firstly, our new algorithm employs worklist judgments, which precisely capture the scope of variables and simplify the formalization of scoping in a theorem prover. Secondly, while DK’s original formalization comes with very well-written manual proofs, there are several details missing and some incorrect proofs, which complicate the task of writing a mechanized proof. Despite the use of a different algorithm we prove the same results as DK, although with significantly different proofs and proof techniques. Since such type inference algorithms are quite subtle and have a complex metatheory, mechanical formalizations are an important advance in type-inference research.},
+journal = {Proc. ACM Program. Lang.},
+month = {jul},
+articleno = {112},
+numpages = {29},
+keywords = {higher-rank polymorphism, type inference, mechanization}
+}
+
+@article{lower-your-guards,
+author = {Graf, Sebastian and Peyton Jones, Simon and Scott, Ryan G.},
+title = {Lower Your Guards: A Compositional Pattern-Match Coverage Checker},
+year = {2020},
+issue_date = {August 2020},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {4},
+number = {ICFP},
+url = {https://doi.org/10.1145/3408989},
+doi = {10.1145/3408989},
+abstract = {A compiler should warn if a function defined by pattern matching does not cover its inputs—that is, if there are missing or redundant patterns. Generating such warnings accurately is difficult for modern languages due to the myriad of language features that interact with pattern matching. This is especially true in Haskell, a language with a complicated pattern language that is made even more complex by extensions offered by the Glasgow Haskell Compiler (GHC). Although GHC has spent a significant amount of effort towards improving its pattern-match coverage warnings, there are still several cases where it reports inaccurate warnings. We introduce a coverage checking algorithm called Lower Your Guards, which boils down the complexities of pattern matching into guard trees. While the source language may have many exotic forms of patterns, guard trees only have three different constructs, which vastly simplifies the coverage checking process. Our algorithm is modular, allowing for new forms of source-language patterns to be handled with little changes to the overall structure of the algorithm. We have implemented the algorithm in GHC and demonstrate places where it performs better than GHC’s current coverage checker, both in accuracy and performance.},
+journal = {Proc. ACM Program. Lang.},
+month = {aug},
+articleno = {107},
+numpages = {30},
+keywords = {strictness, pattern matching, guards, Haskell}
+}
+
 % -----------------------------------
 % Future and maybe viable sources
 % -----------------------------------
