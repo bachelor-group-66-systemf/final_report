@@ -1,5 +1,31 @@
 % CREATED BY Kyriaki Antoniadou-Plytaria, 2021
 
+\usepackage{bussproofs} % propostion rules
+\usepackage{listings}   % code blocks
+\lstset{
+  frame=none,
+  xleftmargin=2pt,
+  stepnumber=1,
+  numbers=left,
+  numbersep=5pt,
+  numberstyle=\ttfamily\tiny\color[gray]{0.3},
+  basicstyle=\small\ttfamily,
+  belowcaptionskip=\bigskipamount,
+  captionpos=b,
+  escapeinside={*'}{'*},
+  language=haskell,
+  tabsize=2,
+  emphstyle={\bf},
+  commentstyle=\it,
+  stringstyle=\mdseries\rmfamily,
+  showspaces=false,
+  keywordstyle=\bfseries\rmfamily,
+  columns=flexible,
+  % basicstyle=\small\sffamily,
+  showstringspaces=false,
+  morecomment=[l]\%,
+}
+\usepackage{array}
 % BASIC SETTINGS
 \usepackage{moreverb}								% List settings
 \usepackage{textcomp}								% Fonts, symbols etc.
@@ -15,8 +41,6 @@
 \numberwithin{equation}{chapter}					% Numbering order for equations
 \numberwithin{figure}{chapter}						% Numbering order for figures
 \numberwithin{table}{chapter}						% Numbering order for tables
-\usepackage{listings}								% Enables source code listings
-\usepackage{chemfig}								% Chemical structures
 \usepackage[top=3cm, bottom=3cm,
 			inner=3cm, outer=3cm]{geometry}			% Page margin lengths			
 \usepackage{eso-pic}								% Create cover page background
@@ -27,10 +51,15 @@
 	\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{#3}}}}
 \usepackage{float} 									% Enables object position enforcement using [H]
 \usepackage{parskip}								% Enables vertical spaces correctly 
-\usepackage[
-    citestyle=numeric,
-    style=ieee
-]{biblatex}                                         % References
+%\usepackage[
+    %style=ieee
+%]{biblatex}                                         % References
+%\usepackage[
+% citestyle=authoryear,
+%     style=apa6, 
+%]{biblatex}
+\usepackage{csquotes}
+\usepackage[backend=biber, style=apa, natbib=true]{biblatex}
 \addbibresource{include/backmatter/refs.bib}        % References source file
 
 % DEFINE THESIS TYPE
@@ -115,5 +144,5 @@
 % Allow a table to split
 \usepackage{longtable}
 
-
-
+% allows for using columns
+\usepackage{multicol}

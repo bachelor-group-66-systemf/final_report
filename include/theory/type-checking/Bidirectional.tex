@@ -1,0 +1,17 @@
+\begin{itemize}
+    \item popular for its scalability, error reporting, and ease of implementation \citep{bidir-gadts}.
+    \item Bidirectional type checking uses two modes: type checking and type synthesis. Checking is easier and allows for a more expressive type system but it requires explicit annotations. Synthesizing a program is harder and undecidable for some language features \citep{bidir}.
+    \item The combination of checking and synthesizing means that there are multiple ways to create a typing judgment. For example, there are eight different rules for a judgment with two premises and one conclusion \citep{bidir}.   
+   \item Dunfield and Krishnaswami \citep{bidir} defined general design criteria for a bidirectional type system. The design criteria are:
+   \begin{itemize}
+       \item Mode-correctness, no guessing of types.
+       \item Completeness, all terms match at least one of the rules.
+       \item Size, fewer rules are easier to work with.
+       \item Annotation character, sensible annotations. Annotations should be lightweight, predictable, stable, and legible.
+   \end{itemize}
+   \item \citep{bidir} also presented a method for creating such a typing system, which is an alteration of the Pfenning recipe \citep{pfenning-recipe}. 
+   The typing rules are divided into two forms of rules: introduction and elimination rules. Introduction rules introduce a connective in the conclusion, while an elimination rule eliminates a connective present in one of the premises. A connective connects multiple formulas, for instance, abstraction $\lambda x. e$ and let expressions $let x = e in e'$.
+   \item Subsumption is an extra checking rule which accepts synthesizable expressions such as application $e_1 e_2$ \citep{bidir}. This is possible due to checking containing more information than synthesizing. Changing in the other direction is thus not possible. 
+   
+   
+\end{itemize}

@@ -1,26 +1,68 @@
 % CREATED BY MAGNUS GUSTAVER, 2020
 \chapter{Introduction}
-This chapter presents the section levels that can be used in the template. 
+\begin{itemize}
+    \item Describe the problem 
+    \item State contributions
+    \item Don't be long-winded be direct.
+\end{itemize}
 
-\section{Section levels}
-The following table presents an overview of the section levels that are used in this document. The number of levels that are numbered and included in the table of contents is set in the settings file \texttt{Settings.tex}. The levels are shown in Section \ref{Section_ref}.
 
-\begin{table}[H]
-\centering
-\begin{tabular}{ll} \hline\hline
-Name & Command\\ \hline
-Chapter & \textbackslash\texttt{chapter\{\emph{Chapter name}\}}\\
-Section & \textbackslash\texttt{section\{\emph{Section name}\}}\\
-Subsection & \textbackslash\texttt{subsection\{\emph{Subsection name}\}}\\
-Subsubsection & \textbackslash\texttt{subsubsection\{\emph{Subsubsection name}\}}\\
-Paragraph & \textbackslash\texttt{paragraph\{\emph{Paragraph name}\}}\\
-Subparagraph & \textbackslash\texttt{paragraph\{\emph{Subparagraph name}\}}\\ \hline\hline
-\end{tabular}
-\end{table}
+%Programming languages are a popular topic within computer science. At the core of every programming language there is a layer that translates the code that is written in the human understandable language, to either direct output of the program or machine code, that is understandable by the computer. The latter is the job of a compiler. 
 
-\section{Section} \label{Section_ref}
-\subsection{Subsection}
-\subsubsection{Subsubsection}
-\paragraph{Paragraph}
-\subparagraph{Subparagraph}
+\textbf{Rough draft}\\
+Programming languages are a popular topic within computer science and oftentimes subject to hot debate between programmers. 
+The debate usually stems from the different features of the languages and what their respective capabilities and limitations are. 
+The features, capabilities and limitations of a programming languages is a consequence of the design choices taken during the creation of the language. 
+Designing a robust programming language is no easy task and there are no universal rules of how to do so. 
+Each feature included of the language comes with their respective implications, and these implications can further limit or even prohibit other features. 
+The project covers the process of designing a compiler for a novel functional programming language, based on simple yet robust theoretical rules. \\
+%and what the compiler is supposed to do given certain features of the language. (Tie this to the actual project)\\
 
+\section{Compiled vs Interpreted}
+
+A programming language can either be compiled or interpreted. This concerns how the language processes the programs written in them. 
+An interpreted language translates the code statement-wise and directly outputs the result of the source code. On the other hand, a compiler translates all the source code at once and outputs machine code, that can be executed by a computer. 
+Interpreters have the advantage of inheriting the architectural support of the host language and are often easier to write. 
+Comparatively, compilers need to generate different machine code for each computer architecture.
+While writing compilers can be tedious, it has the
+advantage of the compiled program being faster. When interpreters execute
+a program, the interpreter and its runtime must handle all communication with the
+hardware through the operating system. Contrary, a compiled program can directly be executed by the 
+operating system.\\
+
+Writing the same program in machine code for different computer architectures is time-consuming and difficult since
+each architecture has different solutions to specific problems. Some architectures might even share an instruction
+set but have different memory layouts or processor structures. LLVM \cite{llvm} solves this problem by abstracting
+away the target architecture to a single, unified architecture emulated in software \cite{lattner}. Hence, the developer
+only needs to target LLVM's intermediate language, LLVM IR, in order to inherit all of LLVM's supported architectures.\\
+
+%Compilers have been extensively studies since ... [insert source] and are of continuous interest, both in the industry and academia, due to the heavy utilization of them. 
+
+The compiler created is designed for a novel programming language. The language created is based on System F, although the language specifications is not limited to System F. The choice of System F was based on it being heavily researched and a small yet powerful extension to a language. [cite]
+
+\section{Purpose}
+
+
+The purpose of the project is to create a compiler, that translates a novel statically typed functional programming language, that is based on System F, to LLVM IR. 
+The programming language implemented is not supposed to be a robust general-purpose language, it is rather an extension of the compiler created. 
+The features of the language extends to automatic memory management, custom data types, lambda terms and static types. 
+
+\section{Scope}
+
+Implementing a compiler, along with a programming language, with all the functionality modern developers have become accustomed to is a complex and time-consuming task. 
+Therefore, it is crucial to define concrete boundaries for areas that will not be implemented or featured. \\
+
+An example of a common language feature, that is not implemented, is side effects. 
+That is, interactions with the world outside of the program. 
+The only side effect present in the language is the printing of computed values. 
+This also implies that the compiled programs are not able to communicate with other programs.\\
+
+Other features that are not implemented:
+\begin{itemize}
+    \item Extensive standard library
+    \item External library management
+    \item Linking and modules
+    \item Code optimizations
+    \item Concurrency
+    \item Input/Output
+\end{itemize}

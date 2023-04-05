@@ -1,0 +1,43 @@
+The Curry-Howard correspondence relates the simply typed $\lambda$-calculus 
+to intuitionistic logic \citep{smolka-notes}. 
+The correspondence describes the construction and deconstruction of types, for instance,
+the function connective $\rightarrow$ constructs a function \citep{howard-1980}.
+In logic, this corresponds to introduction and elimination rules. Also, the function connective $\rightarrow$ corresponds to implication $\implies$. 
+\\
+\\
+Type systems can be designed by combining introduction and elimination rules.
+For example, abstraction $\lambda x.e$ and application $e_1 e_2$ can be type checked by the introduction and elimination rules for $\rightarrow$. 
+\begin{center}
+\vskip 1em
+\AxiomC{$\Gamma, (x : A) \vdash e : B$}
+\RightLabel{$\rightarrow$I}
+\UnaryInfC{$\lambda x.e : A \rightarrow B$}
+\DisplayProof
+\hskip 1.5em
+\AxiomC{$\Gamma \vdash e_1 : A \rightarrow B$}
+\AxiomC{$\Gamma \vdash e_2 : A$}
+\RightLabel{$\rightarrow$E}
+\BinaryInfC{$e_1 e_2 : B$}
+\DisplayProof
+\vskip 1em
+\end{center}
+The judgments use the form $\Gamma \vdash e : A$, read "in context $\Gamma$, term e has type A". 
+$\Gamma$ gives the type of the free variables in $e$, and
+the notation $\Gamma , (x : A)$ is the context that extends $\Gamma$ by associating the identifier $x$ with type $A$.
+Notice that the introduction rule introduces the connective
+in the conclusion, while the elimination rule eliminates it from the premises. 
+The type-checking algorithm can be mechanically derived from the rules. To check if the abstraction $\lambda x.e$ has type $A \rightarrow B$: extend the context with $x : A$ and check if the proposition $e : B$ holds.
+Similarly, the application $e_1 e_2$ have type $B$ if $e_1$ and $e_2$ have type $A \rightarrow B$ and $A$ respectively.
+
+\todo[inline]{Type systems are tradeoffs}
+\todo[inline]{Type checking is the process of checking if a given proof holds}
+\todo[inline]{Type inference is the process of creating a proof for a given proposition}
+
+
+
+
+
+\subsection{Hindley-Milner}
+\input{include/theory/type-checking/HindleyMilner}
+\subsection{Bidirectional}
+\input{include/theory/type-checking/Bidirectional}

@@ -43,6 +43,48 @@
  }
 
 
+
+@article{church,
+ ISSN = {0003486X},
+ URL = {http://www.jstor.org/stable/1968337},
+ author = {Alonzo Church},
+ journal = {Annals of Mathematics},
+ number = {2},
+ pages = {346--366},
+ publisher = {Annals of Mathematics},
+ title = {A Set of Postulates for the Foundation of Logic},
+ urldate = {2023-03-17},
+ volume = {33},
+ year = {1932}
+}
+
+@article{church_1940, title={A formulation of the simple theory of types}, volume={5}, DOI={10.2307/2266170}, number={2}, journal={The Journal of Symbolic Logic}, publisher={Cambridge University Press}, author={Church, Alonzo}, year={1940}, pages={56–68}}
+
+@article{girard1986system,
+  title={The system {F} of variable types, fifteen years later},
+  author={Girard, Jean-Yves},
+  journal={Theoretical computer science},
+  volume={45},
+  pages={159--192},
+  year={1986},
+  publisher={Elsevier}
+}
+
+% Axiom of extensionality
+@incollection{ENDERTON197717,
+title = {CHAPTER 2 - AXIOMS AND OPERATIONS},
+editor = {Herbert B. Enderton},
+booktitle = {Elements of Set Theory},
+publisher = {Academic Press},
+address = {San Diego},
+pages = {17-34},
+year = {1977},
+isbn = {978-0-12-238440-0},
+doi = {https://doi.org/10.1016/B978-0-08-057042-6.50007-7},
+url = {https://www.sciencedirect.com/science/article/pii/B9780080570426500077},
+author = {Herbert B. Enderton}
+}
+
 % Bidirectional
 @article{bidir,
 author = {Dunfield, Jana and Krishnaswami, Neel},
@@ -64,7 +106,7 @@ numpages = {38},
 keywords = {type inference, Type checking}
 }
 
-@inproceedings{10.1145/2500365.2500582,
+@inproceedings{bidir-higher,
 author = {Dunfield, Jana and Krishnaswami, Neelakantan R.},
 title = {Complete and Easy Bidirectional Typechecking for Higher-Rank Polymorphism},
 year = {2013},
@@ -82,25 +124,6 @@ location = {Boston, Massachusetts, USA},
 series = {ICFP '13}
 }
 
-@article{bidir-higher,
-author = {Dunfield, Jana and Krishnaswami, Neelakantan R.},
-title = {Complete and Easy Bidirectional Typechecking for Higher-Rank Polymorphism},
-year = {2013},
-issue_date = {September 2013},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-volume = {48},
-number = {9},
-issn = {0362-1340},
-url = {https://doi.org/10.1145/2544174.2500582},
-doi = {10.1145/2544174.2500582},
-abstract = {Bidirectional typechecking, in which terms either synthesize a type or are checked against a known type, has become popular for its scalability (unlike Damas-Milner type inference, bidirectional typing remains decidable even for very expressive type systems), its error reporting, and its relative ease of implementation. Following design principles from proof theory, bidirectional typing can be applied to many type constructs. The principles underlying a bidirectional approach to polymorphism, however, are less obvious. We give a declarative, bidirectional account of higher-rank polymorphism, grounded in proof theory; this calculus enjoys many properties such as eta-reduction and predictability of annotations. We give an algorithm for implementing the declarative system; our algorithm is remarkably simple and well-behaved, despite being both sound and complete.},
-journal = {SIGPLAN Not.},
-month = {sep},
-pages = {429–442},
-numpages = {14},
-keywords = {higher-rank polymorphism, bidirectional typechecking}
-}
 
 @article{bidir-gadts,
 author = {Dunfield, Jana and Krishnaswami, Neelakantan R.},
@@ -177,6 +200,44 @@ numpages = {30},
 keywords = {strictness, pattern matching, guards, Haskell}
 }
 
+@Book{plfa,
+    author = {Philip Wadler and Wen Kokke and Jeremy G. Siek},
+    title  = {Programming Language Foundations in {A}gda},
+    year   = {2022},
+    month  = aug,
+    url    = {https://plfa.inf.ed.ac.uk/22.08/},
+}
+
+@misc{smolka-notes,
+    title = {Lecture Notes for Semantics (WS 07/08)},
+    author = {Gert Smolka and Jan Schwinghammer},
+    month = {February},
+    year = {2008},
+    publisher = {Saarland University}
+}
+@misc{howard-1980,
+  author={William Alvin Howard},
+  title={The formulae-as-types notion of construction},
+  pages={479-490},
+  year={1980},
+  publiser={University of Illinois}
+}
+
+% Hindley-Milner
+
+@article{milner1978theory,
+  title={A theory of type polymorphism in programming},
+  author={Milner, Robin},
+  journal={Journal of computer and system sciences},
+  volume={17},
+  number={3},
+  pages={348--375},
+  year={1978},
+  publisher={Elsevier}
+}
+
+%[1] W. A. Howard, “The formulae-as-types notion of construction,” To HB Curry: essays on combinatory logic, lambda calculus and formalism, vol. 44, p. 479–490, 1980. 
+
 % -----------------------------------
 % Future and maybe viable sources
 % -----------------------------------
@@ -187,4 +248,13 @@ keywords = {strictness, pattern matching, guards, Haskell}
     type={report},
     institution={Illinois Institute of Technology},
     url={https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=874643}
+}
+
+@InProceedings{LLVM:CGO04,
+    author    = {Chris Lattner and Vikram Adve},
+    title     = "{LLVM: A Compilation Framework for Lifelong Program Analysis \& Transformation}",
+    booktitle = "{Proceedings of the 2004 International Symposium on Code Generation and Optimization (CGO'04)}",
+    address   = {Palo Alto, California},
+    month     = {Mar},
+    year      = {2004}
 }

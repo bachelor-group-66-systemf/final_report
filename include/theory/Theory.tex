@@ -1,0 +1,126 @@
+\newcommand{\aconv}[0]{$\alpha$-conversion}
+\newcommand{\bred}[0]{$\beta$-reduction}
+\newcommand{\ered}[0]{$\eta$-reduction}
+% CREATED BY MAGNUS GUSTAVER, 2020
+\chapter{Theory}
+% Kan skriva ut den här när vi har skrivit fler delar av detta kapitel
+This chapter covers the theory and common problems of modern programming languages blah blah blah.
+
+\section{Lambda calculus} \label{Lambda calculus}
+% \begin{itemize}
+%     \item Good references: \citep{church} \citep{church_1940} \citep{girard1986system}
+%     \item Also see planning report 
+% \end{itemize}
+
+Lambda calculus is a formal mathematical logic system discovered by Alonzo Church \citep{church}. 
+The system consists of three rules and three reductions:
+\newline
+\begin{center}
+    $x$ - variable \\
+    $\lambda x. M$ - abstraction \\
+    $M N$ - application \\
+\end{center}
+
+In common mathematical notation abstraction can be represented by $f(x) = M$, and application by $f(N)$, where $f$ is the aforementioned function.
+\newline
+
+% Kinda ugly with enumerate but I would like a way for it to feel enumerated.
+The first of the three reductions is called \aconv{}. It is the process of renaming all bound variables in a term without changing the semantics
+of the term. For instance, consider the following term $\lambda x . x$, performing \aconv{} using $y$ the term would end up as $\lambda y. y$, which semantically has the same meaning. Thus the two expressions are said to be $\alpha$-equivalent.
+\newline
+
+The second is the \bred{}. The \bred is a reduction where the the bound variable in an abstraction is replaced with the argument term.
+An example is the following term $(\lambda x. x) (\lambda y. y y)$. Performing one \bred{} on the term would yield ($\lambda y. y y$).
+\newline
+
+\todo[inline]{This paragraph is not entirely correct. Eta-reduction is more than this}
+The third of the three reductions is the \ered{}. It is a way to express the equality between two terms, more formally this is known as the axiom of extensionality \citep{ENDERTON197717}. The following two terms are equal by \ered{}: $\lambda x . f x$ and $f$, as long as $x$ does not appear as a free variable in $f$.
+\newline
+
+\todo[inline]{Fix the flow of the text. It does not flow well here}
+Lambda calculus is Turing-complete, which in essence means it is able to express anything a real-world general-purpose computer can express CITATION HERE.
+
+\section{Simply typed lambda calculus}
+
+Simply typed lambda calculus is an extension to lambda calculus introducing type symbols and the type constructor ($\rightarrow$)\citep{church_1940}. For instance, consider the following:
+if the term $M : \alpha \rightarrow \beta$ and $N : \alpha$ are well-formed terms, then the following term $MN$ would have the type $\beta$.
+\newline
+
+Because of the extra restrictions introduced, simply typed lambda calculus is not Turing-complete \todo[inline]{CITATION HERE}.
+
+
+\section{Type system}
+\input{include/theory/type-checking/TypeCheckingTheory}
+
+\section{LLVM}
+\input{include/theory/llvm}
+
+% Behöver verkligen inte vara den första sectionen utav kapitlet
+% Jag antar här att teori ska va presens som introduktion
+\section{Memory management}
+\input{include/theory/GarbageTheory}
+
+
+
+% In the following sections, examples of a figure, an equation, a table, a chemical structure, a list, a listing and a to-do note are shown.
+
+% \section{Figure}
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=0.45\linewidth, trim=3cm 11cm 3cm 11cm]{figure/X.pdf}
+% \includegraphics[width=0.45\linewidth, trim=3cm 11cm 3cm 11cm]{figure/Y.pdf}
+% \caption{Surface and contour plots showing the two dimensional function $z(x,y)=\sin(x+y)\cos(2x)$.}
+% \end{figure}
+
+% \section{Equation}
+% \begin{equation}
+% f(t)=\left\{ \begin{array}{ll}
+% 1,~~~~ & t< 1 \\
+% t^2 & t\geq 1
+% \end{array}\right.
+% \end{equation}
+
+% \section{Table}
+% \begin{table}[H]
+% \centering
+% \caption{Values of $f(t)$ for $t=0,1,\dots 5$.}
+% \begin{tabular}{l|llllll} \hline\hline
+% $t$ & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+% $f(t)$ & 1 & 1 & 4 & 9 & 16 & 25 \\ \hline\hline
+% \end{tabular}
+% \end{table}
+
+% \section{Chemical structure}
+% \begin{center}
+% \chemfig{X*5(-E-T-A-L-)}
+% \end{center}
+
+% \section{List}
+% \begin{enumerate}
+%   \item The first item
+%   \begin{enumerate}
+%     \item Nested item 1
+%     \item Nested item 2
+%   \end{enumerate}
+%   \item The second item
+%   \item The third item 
+%   \item \dots
+% \end{enumerate}
+
+% \section{Source code listing}
+% %\lstset{language=Matlab}
+% \begin{lstlisting}[frame=single]
+% % Generate x- and y-nodes
+% x=linspace(0,1); y=linspace(0,1);
+
+% % Calculate z=f(x,y)
+% for i=1:length(x)
+%  for j=1:length(y)
+%   z(i,j)=x(i)+2*y(j);
+%  end
+% end
+% \end{lstlisting}
+
+% \section{To-do note}
+% The \texttt{todo} package enables to-do notes to be added in the page margin. This can be a very convenient way of making notes in the document during the process of writing. All notes can be hidden by using the option \emph{disable} when loading the package in the settings. \todo{Example of a to-do note.}
+

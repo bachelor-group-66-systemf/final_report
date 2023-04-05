@@ -1,0 +1,98 @@
+\section{Code Generation to LLVM IR (INCREDIBLY ROUGH DRAFT :))}
+\todo[inline]{MYCKET JAG FORM}
+One of the last steps in the compilation chain is creating the code that will  
+be run on the target machine.
+
+\subsection{The choice of approach}
+When targeting LLVM you have two major choices for generating your IR code; 
+you can either generate the IR code on your own, or you can use the LLVM library.
+
+For this project, it was decided to generate the IR code ourselves, as 
+the LLVM libraries that existed for Haskell, LLVM-HS specifically, did not compile 
+with the newer versions of Haskell, nor does it work with the newer versions of 
+LLVM as it targets LLVM 9 (released 2019), and for this project it was decided to use a later
+version, specifically LLVM 15 (released 2022), as it would be easier to work against
+as it is widely available compared to the old releases. At the time of writing this report,
+there is a branch of the LLVM-HS library targeting LLVM 15, but due to something something being new and untested :)
+
+\subsection{Mapping Churf code to LLVM IR}
+Translating the AST into LLVM IR code works quite well due to the immutable nature of lambda calculus,
+and because most functions are simply expression chains that return their final values.
+
+\todo[inline]{Mapping Functions to LLVM}
+\begin{verbatim}
+func : Int -> Int -> Int
+func x y = x + y
+\end{verbatim}
+\begin{verbatim}
+define i64 @func(i64 %x, i64 %y) {
+    	%1 = add i64 %x, %y
+    	ret i64 %1
+}
+\end{verbatim}
+
+\todo[inline]{Mapping Expressions to LLVM}
+\begin{verbatim}
+f = (funB 1 2 3) + (funA 3)
+funA x = x + 5
+funB x y z = x + y + z
+\end{verbatim}
+\begin{verbatim}
+define i64 @f() {
+    	%1 = call i64 @funB(i64 1, i64 2, i64 3)
+    	%2 = call i64 @funA(i64 3)
+    	%3 = add i64 %1, %2
+    	ret i64 %3
+}
+
+define i64 @funA(i64 %x) {
+    	%1 = add i64 %x, 5
+    	ret i64 %1
+}
+
+define i64 @funB(i64 %x, i64 %y, i64 %z) {
+    	%1 = add i64 %x, %y
+    	%2 = add i64 %1, %z
+    	ret i64 %2
+}
+\end{verbatim}
+
+\todo[inline]{Using unnamed variables in LLVM}
+To create temporary variables one can use LLVM's unnamed temporary variables.
+These are variables that are named $\%n$
+
+\todo[inline]{The inability to output constants}
+Do not allocate unnecessary variables, and instead use values directly if possible.
+
+\todo[inline]{Translating EApp}
+\begin{verbatim}
+appEmitter :: ExpT -> ExpT -> [ExpT] -> CompilerState ()
+appEmitter e1 e2 stack = do
+    let newStack = e2 : stack
+    case e1 of
+        (MIR.EApp e1' e2', _) -> appEmitter e1' e2' newStack
+        (MIR.EVar name, t) -> do
+            args <- traverse exprToValue newStack
+            vs <- getNewVar
+            funcs <- gets functions
+            consts <- gets constructors
+            let visibility =
+                    fromMaybe Local $
+                        Global <$ Map.lookup name consts
+                        <|>
+                        Global <$ Map.lookup (name, t) funcs
+                args' = map (first valueGetType . dupe) args
+                call = Call FastCC (type2LlvmType rt) visibility name args'
+            emit $ SetVariable vs call
+        x -> error $ "The unspeakable happened: " <> show x
+\end{verbatim}
+\todo[inline]{Mapping Types to LLVM}
+Primitive types such as Ints and Chars are replaced with their LLVM counterparts (i64/i8). 
+\todo[inline]{Data Types}
+Data types are translated to tagged unions, ala the Rust way
+\todo[inline]{Representing Algebraic Data Types}
+\todo[inline]{Constructing Constructors}
+\todo[inline]{Case Expressions} 
+\subsection{Integration of Garbage Collector and Compilation}
+\todo[inline]{Integrating Garbage collection}
+\todo[inline]{Chucking the product to Clang}

@@ -1,0 +1,58 @@
+
+% -------------------------------------------
+% Jag har bara stolpat upp lite punkter som jag tror kan va bra att nämna
+% men dem får gärna ändras
+% -------------------------------------------
+
+\section{Creating a garbage collector}
+
+Managing system resources is not necessarily a job for the compiler, but for the
+program it outputs. In most modern languages, like C\# or Java, garbage collection
+or other resource management types are part of the languages' standard runtime
+libraries. This implies different problems and design choices than those of the
+compiler. Because of this, a choice was made early in the process to write the
+garbage collection library in a different host language. Haskell is what is considered
+to be a modern high-level language that abstracts several areas, like manual memory
+management, away from the
+developer for convenience. This makes it significantly harder to precisely deal
+with system resources closer to the operating system or hardware. Because of this,
+C++ was chosen as the host language.
+
+\subsection{Designing the runtime library}
+Inspiration was taken from the GNU C standard library, which exposes functions
+like malloc and free, to allocate and free heap memory respectively, but hides
+implementation details from the developer. That is why the garbage collection
+library was designed similarly. Since the point of the library was to manage
+memory automatically, the only functionality needed was a way for the developer
+to allocate memory.\\
+
+Due to the lack of experience in memory management among the group members,
+a decision was made to emulate the heap to minimize the effects on the whole
+heap segment of the program, and instead encapsulate the memory operations
+into the emulation.\\
+
+% JAG VILL SKRIVA KOD INTE TEXT :(
+
+Modern implementations of garbage
+collectors can take up to 38\% of a program's execution time [source here I found earlier]. Because of this,
+the garbage collector was designed to only collect memory when necessary. That is
+when there is not enough free heap memory to directly handle the allocation request.
+This reduced the average time spent by the allocation function and improved performance
+but came with the side effect of unused memory spending more time in memory than
+required. It was deemed to not be a problem since the library emulates the heap
+and thus the total memory used by the program as seen by the operating system is
+constant.
+
+\subsection{Algorithm implementation}
+
+
+\subsection{Integration with the compiler}
+Because the garbage collector is a runtime library, it was decided to be linked with
+the compiler output after compilation. This was a straightforward decision after
+the capabilities of LLVM IR was recognized. LLVM IR allows the developer to call
+functions from libraries loaded in memory, without  
+
+The library source code was compiled to
+a static library which was later linked with the compiled executable by the
+operating system's linker (a program defined by the operating system to link
+dynamic and static libraries for a program or library).

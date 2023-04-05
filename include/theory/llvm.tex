@@ -1,0 +1,35 @@
+very rough :))
+
+A part of creating a programming language is making a representation of runnable by computers,
+for this task, some sort of assembly language is a suitable solution.
+\\
+
+An assembly language is a low-level programming language that closely represents a machine's actual 
+CPU instructions. These languages are often quite simple, consisting of CPU instructions known as opcodes,
+labels to allow for branching code, and in some cases, features like macros.
+\todo[inline]{insert example assembly code?}
+\\
+
+There are a variety of available assembly languages, including the x86 family, the ARM assembly languages, and more.
+However, these flavors of assembly come with a big flaw, which is being platform dependant, and in some cases 
+CPU model dependant. For example; a program written in ARMv7 assembly will not run on an x86 CPU, and the same goes
+for x86 assembly, which can not run on an ARMv7 CPU.
+\\
+
+The creation of LLVM started in 2000, and while it was initially developed to explore dynamic compilation techniques, 
+it has over time evolved to be quite a large compiler framework encompassing many different smaller projects.
+One of these projects is the high-level intermediate representation assembly language LLVM IR, which is a 
+high-level assembly language that can be compiled into many different assembly languages, 
+such as the x86 family or the ARM languages mentioned before.
+
+This intermediate language closely resembles the lower-level assembly languages, while also shaking things up
+by having a type system(a rarity among assembly languages), type declarations, function definitions, and more.
+\\
+
+LLVM IR is written in single static assignment form (SSA), which just adds the rule that variables may only 
+be assigned once. This guarantee makes optimization of the IR code easier, as unused and unnecessary variables
+can easily be optimized away and quite a few other optimization algorithms make use of it,
+although it comes at the cost of being harder to translate to compared to other assembly languages, depending on
+the source language.
+\todo[inline]{insert sources}
+\todo[inline]{insert example}

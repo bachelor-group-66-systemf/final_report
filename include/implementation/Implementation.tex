@@ -1,0 +1,31 @@
+\chapter{Implementation}
+
+\section{Language specification}
+
+
+
+\begin{figure}[t]
+\centering
+\[
+  \begin{array}{l l l}
+     \multicolumn{3}{l}{\textbf{Types}} \\
+     \tau & ::= a \mid \tau_1 \rightarrow \tau_2 \mid T\:\overline{\tau} \mid \dots & \text{Monotypes} \\
+     \multicolumn{2}{l}{a, b} & \text{Type variables} \\
+     T &                                                              & \text{Type constructors} \\
+     \Gamma & ::= \epsilon \mid \Gamma, a \mid \Gamma, x : \tau  & \text{Typing environment} \\[2mm]
+     \multicolumn{3}{l}{\textbf{Terms and clauses}} \\
+     \multicolumn{2}{l}{f,g,x,y,\dots}        & \text{Term variables} \\
+     e &                                      & \text{Expression} \\
+     c & ::= \vec{p} \, \rightarrow \, e      & \text{Clause} \\[2mm]
+     \multicolumn{3}{l}{\textbf{Patterns}} \\
+     K &                                      & \text{Data constructors} \\
+     p,q & ::= x \mid K\: \vec{p} \mid G      & \text{Pattern} \\
+     G & ::= p \leftarrow e                 & \text{Guard} \\[2mm]
+     \multicolumn{3}{l}{\textbf{Value abstractions}} \\
+     S,C,U,D & ::= \overline{v}             & \text{Value set abstraction} \\
+     u,w & ::= x \mid K\: \vec{u}           & \text{Value abstraction} 
+  \end{array}
+\]
+\caption{Syntax}
+\label{fig:alg_syntax}
+\end{figure}
